@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="game-list" style="">
+     <h2>Список игр</h2>
+
+    {% for theme in theme_list %}
+        <ul>{{ theme.theme }} </ul>
+<!--        {% for game in games_list %}-->
+<!--            <ul>{{ theme.theme }} </ul>-->
+<!--                <li>{{ game.name_game }}</li>-->
+<!--        {% endfor %}-->
+    {% endfor %}
+</div>
+    <a href="/">На главную</a>
+{% endblock %}

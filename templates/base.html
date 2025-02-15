@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт квизов</title>
+    <style>
+        :root {
+            --font-color: #266382;
+            --bg-color: #C6EDFD;
+            --selections-color: #008BD1;
+            --blocks-color: #22CCEE;
+            --tasks-color: #AF0080;
+            --title-color: #FFF;
+            --borders-color: white;
+            --column-color: #EEF9FF;
+            --blocks-margin: 28px;
+        }
+<!--        html {-->
+<!--             background-image: url('images/main2.jpg');-->
+<!--             background-repeat: no-repeat;-->
+<!--             background-position: center center;-->
+<!--             background-attachment: fixed;-->
+<!--             -webkit-background-size: cover;-->
+<!--             -moz-background-size: cover;-->
+<!--             -o-background-size: cover;-->
+<!--             background-size: cover;-->
+<!--        }-->
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .section-main {
+            color: red;
+            background-color: green;
+            background-image: url('../images/main2.jpg');
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        header {
+            background-color: #5D908A;
+            color: white;
+            padding: 1em;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .column-left, .column-right {
+	        display: flex;
+	        align-items: center;
+        }
+
+        nav ul {
+            padding: 0;
+            display: flex;
+            list-style: none;
+            text-align: center;
+        }
+
+        nav ul li {
+            padding: 7% 0 7% 0;
+            border: 2px solid var(--borders-color);
+            border-radius: 5px;
+
+            width: 100px;
+            color: white;
+            font-size: 16px;
+        }
+
+        nav a {
+            margin: 2px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+            margin: 0 auto;
+<!--            max-width: 800px;-->
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+
+        / Styles for the task detail page /
+        .task-detail {
+            padding: 20px;
+        }
+
+        .task-detail h2 {
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="column-left">
+        <h1>Квизы Онлайн</h1>
+    </div>
+    <div class="column-right">
+        <nav>
+            <ul>
+                <a href="{% url 'games'%}">
+                    <li>Список игр</li>
+                </a>
+                <a href="#">
+                    <li>Войти</li>
+                </a>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main class="main-container" style="display:flex">
+{% block content %}
+{% endblock %}
+
+</main>
+<footer>
+    &copy; 2025 Квизы онлайн
+</footer>
+
+</body>
+</html>
