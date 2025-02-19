@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    {% for question in question_list %}
+    <ul>{{ question }}</ul>
+    <div class="col-sm-5">
+        <h2>Введите ответ</h2>
+        <form  method="post" action="{% url 'answers' %}">
+            {% csrf_token %}
+            {{ answers_form }}
+            <button type="submit" class="btn btn-primary">Отправить ответ</button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

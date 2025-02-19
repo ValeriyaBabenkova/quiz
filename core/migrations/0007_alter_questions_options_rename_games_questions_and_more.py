@@ -11,13 +11,13 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterModelOptions(
-            name='questions',
-            options={'verbose_name': 'Вопросы игры', 'verbose_name_plural': 'Вопросы игры'},
-        ),
         migrations.RenameModel(
             old_name='Games',
             new_name='Questions',
+        ),
+        migrations.AlterModelOptions(
+            name='questions',
+            options={'verbose_name': 'Вопросы игры', 'verbose_name_plural': 'Вопросы игры'},
         ),
         migrations.CreateModel(
             name='Answers',

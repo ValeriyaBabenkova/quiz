@@ -57,4 +57,4 @@ class Answers (models.Model):
         verbose_name_plural = 'Проверка ответов'
 
     def __str__(self):
-        return self.id
+        return self.answer_team

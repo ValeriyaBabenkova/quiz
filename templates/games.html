@@ -1,16 +1,26 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-<div class="game-list" style="">
-     <h2>Список игр</h2>
-
+<h2>Список игр</h2>
+<div>
+<div id="myBtnContainer">
+    <button class="btn active" onclick="filterSelection('all')">Показать все</button>
     {% for theme in theme_list %}
-        <ul>{{ theme.theme }} </ul>
-<!--        {% for game in games_list %}-->
-<!--            <ul>{{ theme.theme }} </ul>-->
-<!--                <li>{{ game.name_game }}</li>-->
-<!--        {% endfor %}-->
+    <button class="btn" onclick=""> {{ theme.theme }} </button>
     {% endfor %}
 </div>
-    <a href="/">На главную</a>
+</div>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for game in games_list %}
+  <div class="col">
+    <div class="card h-100">
+      <img src="{% static 'images/cat.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ game.name_game }}</h5>
+        <p class="card-text">Это более длинная карта С вспомогательным текстом ниже в качестве естественного перехода к дополнительному контенту. Этот контент немного длиннее.</p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 {% endblock %}
