@@ -7,7 +7,16 @@ def index(request):
 def games(request):
     theme_list = Theme.objects.all()
     games_list = GamesList.objects.all()
-    return render(request, 'games.html', {'games_list': games_list, 'theme_list': theme_list} )
+
+    print(games_list)
+
+    theme = request.GET.get('theme')
+    active_theme = None
+
+    if theme:
+        games_list = games_list.filter(theme__id=theme)
+        active_theme = Theme.objects.get(id=theme)
+    return render(request, 'games.html', {'games_list': games_list, 'theme_list': theme_list, 'active_theme': active_theme} )
 
 def answers(request):
     answers_form = AnswersAddForm(request.POST)

@@ -27,6 +27,7 @@ class Theme(models.Model):
 class GamesList(models.Model):
     name_game = models.TextField(max_length=100, verbose_name='Название игры')
     theme = models.ForeignKey(Theme, blank=True, null=True, on_delete=models.SET_NULL, verbose_name='Тема игры')
+    image = models.ImageField(upload_to='images', verbose_name='Картинка', blank=True, null=True)
 
     class Meta:
         verbose_name = 'Список игр'
