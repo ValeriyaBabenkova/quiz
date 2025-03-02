@@ -6,6 +6,7 @@
 <div>
 <div id="myBtnContainer">
     <button class="btn active" onclick="filterSelection('all')">Показать все</button>
+    <button class="btn {{ theme }}"> {{ theme.theme }} </button>
     {% for theme in theme_list %}
     <button class="btn {{ theme }}"> {{ theme.theme }} </button>
 

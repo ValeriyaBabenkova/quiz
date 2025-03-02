@@ -116,7 +116,7 @@
 <body>
 <header>
     <div class="column-left">
-        <h1>Квизы Онлайн</h1>
+        <a href="{% url 'index'%}" style="text-decoration:none; color:white"><h1>Квизы Онлайн</h1></a>
     </div>
     <div class="column-right">
         <nav>
@@ -124,7 +124,7 @@
                 <a href="{% url 'games'%}">
                     <li>Список игр</li>
                 </a>
-                <a href="#">
+                <a href="{% url 'profiles_login' %}">
                     <li>Войти</li>
                 </a>
             </ul>
