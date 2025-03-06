@@ -9,18 +9,18 @@ def profile(request):
 
 
 def login(request):
-    form = LoginForm()
+    login_form = LoginForm()
 
     if request.method == 'POST':
-        form = LoginForm(request, request.POST)
+        login_form = LoginForm(request, request.POST)
 
-        if form.is_valid():
-            user = form.get_user()
+        if login_form.is_valid():
+            user = login_form.get_user()
             auth_login(request, user)
 
             return redirect('profiles_home')
 
-    return render(request, 'profiles/login.html', {'form': form})
+    return render(request, 'profiles/login.html', {'login_form': login_form})
 def register(request):
 
     form = RegisterForm()
@@ -29,7 +29,7 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
-            password = form.cleaned_data['password1']
+            password = form.cleaned_data['password']
 
             # создали пользователя
             User = get_user_model()
@@ -49,3 +49,7 @@ def register(request):
         # проверка валидности формы
 
     return render(request, 'profiles/register.html', {'form': form})
+
+def logout(request):
+    auth_logout(request)
+    return redirect('main')
