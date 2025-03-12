@@ -6,7 +6,7 @@
     <ul>{{ question }}</ul>
     <div class="col-sm-5">
         <h2>Введите ответ</h2>
-        <form  method="post" action="{% url 'answers' %}">
+        <form  method="post" action="{% url 'games_answers' %}">
             {% csrf_token %}
             {{ answers_form }}
             <button type="submit" class="btn btn-primary">Отправить ответ</button>

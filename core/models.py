@@ -39,6 +39,7 @@ class GamesList(models.Model):
 
 class Questions (models.Model):
     name_game = models.ForeignKey(GamesList, blank=True, null=True, on_delete=models.SET_NULL, verbose_name='Название игры')
+    num_tour = models.CharField(max_length=256, verbose_name='Номер тура', blank=True, null=True)
     text = models.CharField(max_length=256, verbose_name='Текст вопроса', blank=True, null=True)
     ans = models.CharField(max_length=256, verbose_name='Ответ', blank=True, null=True)
 

@@ -4,13 +4,10 @@
 .row {
   display: inline-block;
 }
-
 .column {
   float: left;
   width: 33.33%;
 }
-
-
 .btn {
   border: none;
   outline: none;
@@ -21,14 +18,10 @@
 .btn:hover {
   background-color: #ddd;
 }
-
-
 .btn.active {
   background-color: #666;
    color: white;
 }
-
-
 
  :root {
             --font-color: #266382;
@@ -51,87 +44,91 @@
 <!--             -o-background-size: cover;-->
 <!--             background-size: cover;-->
 <!--        }-->
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .section-main {
-            color: red;
-            background-color: green;
-            background-image: url('../images/main2.jpg');
-            background-repeat: no-repeat;
-            background-size: contain;
-        }
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+.section-main {
+  color: red;
+  background-color: green;
+  background-image: url('../images/main2.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
 
-        .header {
-            background-color: #5D908A;
-            color: white;
-            padding: 1em;
+.header {
+  background-color: #5D908A;
+  color: white;
+  padding: 1em;
 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.column-left, .column-right {
+  display: flex;
+  align-items: center;
+}
 
-        .column-left, .column-right {
-	        display: flex;
-	        align-items: center;
-        }
+nav ul {
+  padding: 0;
+  display: flex;
+  list-style: none;
+  text-align: center;
+}
 
-        nav ul {
-            padding: 0;
-            display: flex;
-            list-style: none;
-            text-align: center;
-        }
+nav ul li {
+  padding: 7% 0 7% 0;
+  border: 2px solid var(--borders-color);
+  border-radius: 5px;
 
-        nav ul li {
-            padding: 7% 0 7% 0;
-            border: 2px solid var(--borders-color);
-            border-radius: 5px;
-
-            width: 100px;
-            color: white;
-            font-size: 16px;
-        }
+  width: 100px;
+  color: white;
+  font-size: 16px;
+}
 
 
-        nav a {
-            margin: 2px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-        .btn-nav, .btn-nav:hover {
-            padding: 7% 0 7% 0;
-            border: 2px solid var(--borders-color);
-            background-color: #5D908A;
-            border-radius: 5px;
+nav a {
+  margin: 2px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.btn-nav, .btn-nav:hover {
+  padding: 7% 0 7% 0;
+  border: 2px solid var(--borders-color);
+  background-color: #5D908A;
+  border-radius: 5px;
 
-            width: 100px;
-            color: white;
-            font-size: 16px;
+  width: 100px;
+  color: white;
+  font-size: 16px;
 
-        }
+}
 
-        main {
-            padding: 20px;
-            margin: 0 auto;
+.games {
+    display: inline;
+    margin: 150px;
+}
+
+main {
+  padding: 20px;
+  margin: 0 auto;
 <!--            max-width: 800px;-->
-            background-color: white;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1em;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1em;
+: fixed;
+  bottom: 0;
+  width: 100%;
+}
 
 
         / Styles for the task detail page /

@@ -2,15 +2,13 @@
 {% load static %}
 
 {% block content %}
-<h2>Список игр</h2>
 <div>
+<h2>Список игр</h2>
+<div class = "games">
 <div id="myBtnContainer">
     <button class="btn active" onclick="filterSelection('all')">Показать все</button>
-    <button class="btn {{ theme }}"> {{ theme.theme }} </button>
     {% for theme in theme_list %}
     <button class="btn {{ theme }}"> {{ theme.theme }} </button>
-
-    <p><a href="?theme={{ theme.id }}">{{ games_list.title }}</a></p>
     {% endfor %}
 </div>
 </div>
@@ -26,5 +24,6 @@
     </div>
   </div>
   {% endfor %}
+</div>
 </div>
 {% endblock %}
