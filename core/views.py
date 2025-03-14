@@ -38,8 +38,12 @@ def game_answers(request, name_game_id):
     print(2,name_game_id)
     answers_form = AnswersAddForm(request.POST)
     print(3,answers_form)
-    question_list = Questions.objects.filter(name_game_id=1)
-    print(4,question_list)
+    question_list = Questions.objects.all().filter(name_game_id=name_game_id)
+    print(4, question_list)
+    num_tour_list = Questions.objects.all().filter(name_game_id=name_game_id).values('num_tour').distinct()
+    print(5, num_tour_list)
+    num_question_list = Questions.objects.all().filter(name_game_id=name_game_id).values('num_question').distinct()
+    print(6, num_question_list)
     if request.method == 'POST':
 
         answer_team = AnswersAddForm(request.POST)
@@ -50,4 +54,4 @@ def game_answers(request, name_game_id):
         answer.save
 
     return render(request, 'answers.html',
-                  {'question_list': question_list, 'answers_form':answers_form})
+                  {'question_list': question_list, 'answers_form':answers_form, 'num_tour_list': num_tour_list})

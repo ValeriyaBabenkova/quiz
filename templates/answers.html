@@ -2,16 +2,19 @@
 
 {% block content %}
 <div>
-    {% for question in question_list %}
-    <ul>{{ question }}</ul>
-    <div class="col-sm-5">
-        <h2>Введите ответ</h2>
-        <form  method="post" action="{% url 'games_answers' %}">
-            {% csrf_token %}
-            {{ answers_form }}
-            <button type="submit" class="btn btn-primary">Отправить ответ</button>
-        </form>
-    </div>
-    {% endfor %}
+    {% for num_tour in num_tour_list %}
+    <h1> Тур № {{ num_tour.num_tour }}</h1>
+        {% for question in question_list %}
+        <ul>{{ question }}</ul>
+        <div class="col-sm-5">
+            <h2>Введите ответ</h2>
+            <form  method="post" action="">
+                {% csrf_token %}
+                {{ answers_form }}
+                <button type="submit" class="btn btn-primary">Отправить ответ</button>
+            </form>
+        </div>
+        {% endfor %}
+     {% endfor %}
 </div>
 {% endblock %}

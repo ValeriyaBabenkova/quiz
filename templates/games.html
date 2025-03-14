@@ -12,17 +12,20 @@
     {% endfor %}
 </div>
 </div>
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row row-cols-1 row-cols-md-6 g-4">
   {% for game in games_list %}
-  <div class="col">
-    <div class="card h-100">
-      <img src="{{ games_list.image.url }}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">{{ game.name_game }}</h5>
-        <p class="card-text">Это более длинная карта С вспомогательным текстом ниже в качестве естественного перехода к дополнительному контенту. Этот контент немного длиннее.</p>
-      </div>
-    </div>
-  </div>
+    <a href='{{game.id}}' class="display:block">
+        <div class="col {{ game.id }}">
+            <div class="card h-100">
+                <img src="{{ game.image.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ game.name_game }}</h5>
+                    <p class="card-text">Это более длинная карта С вспомогательным текстом ниже в качестве естественного
+                        перехода к дополнительному контенту. Этот контент немного длиннее.</p>
+                </div>
+            </div>
+        </div>
+    </a>
   {% endfor %}
 </div>
 </div>
