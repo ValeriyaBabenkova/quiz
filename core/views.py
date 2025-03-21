@@ -32,6 +32,7 @@ def games(request):
         games_list = games_list.filter(theme__id=theme)
         active_theme = Theme.objects.get(id=theme)
     return render(request, 'games.html', {'games_list': games_list, 'theme_list': theme_list, 'active_theme': active_theme} )
+
 def game(request, name_game_id):
     return render (request, 'game_detail.html')
 
@@ -49,4 +50,4 @@ def game_answers(request, name_game_id, num_tour, num_question):
         answer.save
 
     return render(request, 'answers.html',
-                  {'question_list': question_list} )
+                  {'question': question_list} )

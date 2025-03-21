@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block content %}
 
 <div class="question-container">
@@ -9,7 +9,7 @@
             <h2>Введите ответ</h2>
             <form  method="post" action="">
                 {% csrf_token %}
-                {{ answers_form }}
+                {{ answers_form|crispy }}
                 <button type="submit" class="btn btn-primary">Отправить ответ</button>
             </form>
         </div>
