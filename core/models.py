@@ -51,9 +51,9 @@ class Questions (models.Model):
     def __str__(self):
         return self.text
 class Answers (models.Model):
-    team = models.ForeignKey(Users, blank=True, null=True, on_delete=models.SET_NULL, verbose_name='Название команды')
+    team = models.ForeignKey(Users, blank=True, null=True, on_delete=models.SET_NULL, verbose_name='Название команды', related_name='team')
     answer_team = models.CharField (max_length=256, verbose_name='Ответ команды', blank=True, null=True)
-    answer_right = models.ForeignKey(Questions, blank=True, null=True, on_delete=models.SET_NULL, verbose_name='Правильный ответ')
+    answer_right = models.ForeignKey(Questions, blank=True, null=True, on_delete=models.SET_NULL, verbose_name='Правильный ответ', related_name='answer_right')
 
     class Meta:
         verbose_name = 'Проверка ответов'

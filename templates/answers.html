@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div>
-    {% for num_tour in num_tour_list %}
-    <h1> Тур № {{ num_tour.num_tour }}</h1>
-        {% for question in question_list %}
-        <ul>{{ question }}</ul>
+
+<div class="question-container">
+        <h1> Тур № {{ question.num_tour }}</h1>
+        <ul>{{ question.num_question }}, {{ question.text }}</ul>
         <div class="col-sm-5">
             <h2>Введите ответ</h2>
             <form  method="post" action="">
@@ -14,7 +13,58 @@
                 <button type="submit" class="btn btn-primary">Отправить ответ</button>
             </form>
         </div>
-        {% endfor %}
-     {% endfor %}
+<!--    <div class="question active" id="question1">-->
+<!--        <h2>Вопрос 1</h2>-->
+<!--        <p>Какой ваш любимый цвет?</p>-->
+<!--    </div>-->
+<!--    <div class="question" id="question2">-->
+<!--        <h2>Вопрос 2</h2>-->
+<!--        <p>Какой ваш любимый фильм?</p>-->
+<!--    </div>-->
+<!--    <div class="question" id="question3">-->
+<!--        <h2>Вопрос 3</h2>-->
+<!--        <p>Какой ваш любимый город?</p>-->
+<!--    </div>-->
+    <!-- Добавьте больше вопросов по необходимости -->
 </div>
+
+<div class="timer" id="timer">30</div>
+
+<script>
+    const questions = document.querySelectorAll('.question');
+    const timerElement = document.getElementById('timer');
+    let currentQuestionIndex = 0;
+    let timeLeft = 30;
+
+    function showNextQuestion() {
+        // Скрываем текущий вопрос
+        questions[currentQuestionIndex].classList.remove('active');
+
+        // Переходим к следующему вопросу
+        currentQuestionIndex = (currentQuestionIndex + 1) % questions.length;
+
+        // Показываем следующий вопрос
+        questions[currentQuestionIndex].classList.add('active');
+
+        // Сбрасываем таймер
+        timeLeft = 30;
+        timerElement.textContent = timeLeft;
+    }
+
+    // Обновляем таймер каждую секунду
+    const timerInterval = setInterval(() => {
+        timeLeft--;
+        timerElement.textContent = timeLeft;
+
+        // Если время вышло, переключаем вопрос
+        if (timeLeft <= 0) {
+            showNextQuestion();
+        }
+    }, 1000);
+
+    // Показываем следующий вопрос каждые 30 секунд
+    setInterval(showNextQuestion, 30000);
+</script>
+
+
 {% endblock %}

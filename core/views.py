@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import GamesList, Users, Theme, Answers, Questions
 from .forms import AnswersAddForm
 from django.contrib.auth import login as auth_login, get_user_model, authenticate, logout as auth_logout
@@ -32,18 +32,13 @@ def games(request):
         games_list = games_list.filter(theme__id=theme)
         active_theme = Theme.objects.get(id=theme)
     return render(request, 'games.html', {'games_list': games_list, 'theme_list': theme_list, 'active_theme': active_theme} )
+def game(request, name_game_id):
+    return render (request, 'game_detail.html')
 
-def game_answers(request, name_game_id):
-    print(1,request)
-    print(2,name_game_id)
-    answers_form = AnswersAddForm(request.POST)
-    print(3,answers_form)
-    question_list = Questions.objects.all().filter(name_game_id=name_game_id)
-    print(4, question_list)
-    num_tour_list = Questions.objects.all().filter(name_game_id=name_game_id).values('num_tour').distinct()
-    print(5, num_tour_list)
-    num_question_list = Questions.objects.all().filter(name_game_id=name_game_id).values('num_question').distinct()
-    print(6, num_question_list)
+def game_answers(request, name_game_id, num_tour, num_question):
+
+    question_list= get_object_or_404(Questions,name_game_id=name_game_id, num_tour=num_tour, num_question=num_question)
+
     if request.method == 'POST':
 
         answer_team = AnswersAddForm(request.POST)
@@ -54,4 +49,4 @@ def game_answers(request, name_game_id):
         answer.save
 
     return render(request, 'answers.html',
-                  {'question_list': question_list, 'answers_form':answers_form, 'num_tour_list': num_tour_list})
+                  {'question_list': question_list} )
