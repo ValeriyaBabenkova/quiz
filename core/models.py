@@ -36,6 +36,28 @@ class GamesList(models.Model):
     def __str__(self):
         return self.name_game
 
+class Tours(models.Model):
+    num_tour = models.CharField(max_length=100,verbose_name='Номер тура')
+
+    class Meta:
+        verbose_name = 'Номер тура'
+        verbose_name_plural = 'Номера туров'
+
+    def __str__(self):
+        return self.num_tour
+
+
+class QuestionNum(models.Model):
+    num_tour = models.ForeignKey(Tours,on_delete=models.CASCADE, verbose_name='Номер тура')
+    num_question = models.CharField(max_length=100,verbose_name='Номер вопроса')
+
+    class Meta:
+        verbose_name = 'Номер вопроса'
+        verbose_name_plural = 'Номера вопросов'
+
+    def __str__(self):
+        return self.num_question
+
 
 class Questions (models.Model):
     name_game = models.ForeignKey(GamesList, blank=True, null=True, on_delete=models.SET_NULL, verbose_name='Название игры')
@@ -49,7 +71,7 @@ class Questions (models.Model):
         verbose_name_plural = 'Вопросы игры'
 
     def __str__(self):
-        return self.text
+        return f"Игра {self.name_game}. Вопрос {self.num_question} тура {self.num_tour}"
 class Answers (models.Model):
     team = models.ForeignKey(Users, blank=True, null=True, on_delete=models.SET_NULL, verbose_name='Название команды', related_name='team')
     answer_team = models.CharField (max_length=256, verbose_name='Ответ команды', blank=True, null=True)

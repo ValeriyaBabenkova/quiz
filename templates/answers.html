@@ -4,12 +4,13 @@
 
 <div class="question-container">
         <h1> Тур № {{ question.num_tour }}</h1>
-        <ul>{{ question.num_question }}, {{ question.text }}</ul>
+        <ul>Вопрос {{ question.num_question }}
+            <br>{{ question.text }}</ul>
         <div class="col-sm-5">
             <h2>Введите ответ</h2>
             <form  method="post" action="">
                 {% csrf_token %}
-                {{ answers_form|crispy }}
+                {{ answers_team|crispy }}
                 <button type="submit" class="btn btn-primary">Отправить ответ</button>
             </form>
         </div>

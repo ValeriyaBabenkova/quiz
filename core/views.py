@@ -39,6 +39,8 @@ def game(request, name_game_id):
 def game_answers(request, name_game_id, num_tour, num_question):
 
     question_list= get_object_or_404(Questions,name_game_id=name_game_id, num_tour=num_tour, num_question=num_question)
+    answer_team = AnswersAddForm()
+    print(answer_team)
 
     if request.method == 'POST':
 
@@ -50,4 +52,4 @@ def game_answers(request, name_game_id, num_tour, num_question):
         answer.save
 
     return render(request, 'answers.html',
-                  {'question': question_list} )
+                  {'question': question_list, 'answer_team':answer_team})

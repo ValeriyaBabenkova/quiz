@@ -1,5 +1,7 @@
 from django import forms
 from .models import Answers
 
-class AnswersAddForm(forms.Form):
-    answer_team = forms.CharField(label='Введите ваш ответ:')
+class AnswersAddForm(forms.ModelForm):
+    class Meta:
+        model = Answers
+        fields = ['answer_team']
