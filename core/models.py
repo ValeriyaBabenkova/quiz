@@ -72,6 +72,7 @@ class Questions (models.Model):
 
     def __str__(self):
         return f"Игра {self.name_game}. Вопрос {self.num_question} тура {self.num_tour}"
+
 class Answers (models.Model):
     team = models.ForeignKey(Users, blank=True, null=True, on_delete=models.SET_NULL, verbose_name='Название команды', related_name='team')
     answer_team = models.CharField (max_length=256, verbose_name='Ответ команды', blank=True, null=True)

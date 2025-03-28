@@ -10,7 +10,7 @@
             <h2>Введите ответ</h2>
             <form  method="post" action="">
                 {% csrf_token %}
-                {{ answers_team|crispy }}
+                {{ answer_team|crispy }}
                 <button type="submit" class="btn btn-primary">Отправить ответ</button>
             </form>
         </div>

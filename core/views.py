@@ -43,13 +43,19 @@ def game_answers(request, name_game_id, num_tour, num_question):
     print(answer_team)
 
     if request.method == 'POST':
+        print(request.POST)
 
         answer_team = AnswersAddForm(request.POST)
-        answer_right = Questions.objects.get(id=name_game_id)
+        answer_right = Questions.objects.get(id=num_question,name_game__id=name_game_id, num_tour=num_tour)
+        print(answer_right.text)
+        if answer_team.is_valid():
+            answer_team = answer_team.save(commit=False)
+            # answer_team.profile = request.user.profile
 
-        answer = Answers.objects.create(answer_team=answer_team, answer_right=answer_right)
-        answer.profile= request.user.profile
-        answer.save
+            print(bool(answer_team.answer_team.upper() == answer_right.text.upper()))
+
+
+            return redirect('game_answers')
 
     return render(request, 'answers.html',
                   {'question': question_list, 'answer_team':answer_team})
